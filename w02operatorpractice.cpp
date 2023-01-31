@@ -31,16 +31,36 @@ void Time::set_is_morning(bool i) {
 }
 
 
-ostream& operator<<(ostream& out, Time a)
+ostrea
+
+
+
+
+
+Examples:
+
+
+//Adam, Moneeb
+Time Time::operator+(Time a, Time b)
 {
-   string s = "";
-   if (a.get_is_morning()) {
-      s = "AM";
+   bool is_morning = true;
+   int hours = a.get_hours + b.get_hours;
+   int minutes = a.get_minutes + b.get_hours + minutes/60;
+   minutes = minute % 60;
+   if(!b.get_is_morning())
+   {
+      hours+=12;
    }
-   else {s = "PM";};
-   
-   out << a.get_hours() << ":"
-      << setw(2) << setfill('0')
-      << a.get_minutes() << " " << s;
-   return out;
+   if((hours/12)%2 == 1)
+   {
+      is_morning = false;
+   }
+   return Time(hours, minutes, is_morning);
+
+      
+}
+
+istream& operator>>(istream& in, Time& a)
+{
+
 }
