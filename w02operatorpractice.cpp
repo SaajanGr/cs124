@@ -31,22 +31,16 @@ void Time::set_is_morning(bool i) {
 }
 
 
-ostrea
-
-
-
-
-
-Examples:
-
-
-
-Time operator+(Time a, Time b)
+ostream& operator<<(ostream& out, Time a)
 {
-
-}
-
-istream& operator>>(istream& in, Time& a)
-{
-
+   string s = "";
+   if (a.get_is_morning()) {
+      s = "AM";
+   }
+   else {s = "PM";};
+   
+   out << a.get_hours() << ":"
+      << setw(2) << setfill('0')
+      << a.get_minutes() << " " << s;
+   return out;
 }
